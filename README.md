@@ -97,18 +97,18 @@ graph TD
     PeminjamanService -- "Mengakses" --> UserDB
 
     %% Styling untuk visual yang lebih jelas
-    style C fill:#f4a261,stroke:#333,stroke-width:2px
-    style API fill:#a8c7f9,stroke:#333,stroke-width:2px
-    style AuthController fill:#e76f51,stroke:#333,stroke-width:2px
-    style BukuController fill:#e76f51,stroke:#333,stroke-width:2px
-    style CategoryController fill:#e76f51,stroke:#333,stroke-width:2px
-    style PeminjamanController fill:#e76f51,stroke:#333,stroke-width:2px
-    style AuthService fill:#2a9d8f,stroke:#333,stroke-width:2px
-    style BukuService fill:#2a9d8f,stroke:#333,stroke-width:2px
-    style CategoryService fill:#2a9d8f,stroke:#333,stroke-width:2px
-    style PeminjamanService fill:#2a9d8f,stroke:#333,stroke-width:2px
-    style UserDB fill:#e9c46a,stroke:#333,stroke-width:2px
-    style BukuDB fill:#e9c46a,stroke:#333,stroke-width:2px
-    style CategoryDB fill:#e9c46a,stroke:#333,stroke-width:2px
-    style PeminjamanDB fill:#e9c46a,stroke:#333,stroke-width:2px
+    style C fill:#FFFFE0,stroke:#333,stroke-width:2px
+    style API fill:#B0E0E6,stroke:#333,stroke-width:2px
+    style AuthController fill:#E6E6FA,stroke:#333,stroke-width:2px
+    style BukuController fill:#E6E6FA,stroke:#333,stroke-width:2px
+    style CategoryController fill:#E6E6FA,stroke:#333,stroke-width:2px
+    style PeminjamanController fill:#E6E6FA,stroke:#333,stroke-width:2px
+    style AuthService fill:#F0FFF0,stroke:#333,stroke-width:2px
+    style BukuService fill:#F0FFF0,stroke:#333,stroke-width:2px
+    style CategoryService fill:#F0FFF0,stroke:#333,stroke-width:2px
+    style PeminjamanService fill:#F0FFF0,stroke:#333,stroke-width:2px
+    style UserDB fill:#FFF0F5,stroke:#333,stroke-width:2px
+    style BukuDB fill:#FFF0F5,stroke:#333,stroke-width:2px
+    style CategoryDB fill:#FFF0F5,stroke:#333,stroke-width:2px
+    style PeminjamanDB fill:#FFF0F5,stroke:#333,stroke-width:2px
 ```
