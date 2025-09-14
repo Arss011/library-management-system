@@ -38,6 +38,31 @@ graph TD
     style D fill:#FF6347,stroke:#333,stroke-width:2px,color:#FFF
 ```
 
+### Alur Peminjaman Buku
+
+```mermaid
+graph TD
+    %% Teks node yang lebih sederhana untuk menghindari kesalahan
+    A[User Request: Pinjam Buku] --> B{Cari User & Buku};
+    B -- "Ditemukan" --> C{Cek Ketersediaan & Stok};
+    B -- "Tidak Ditemukan" --> G[Gagal: User/Buku tidak ditemukan];
+    C -- "Ya" --> D[Kurangi Stok Buku];
+    D --> E[Buat Record Peminjaman];
+    E --> F[Sukses: Buku berhasil dipinjam];
+    C -- "Tidak" --> H[Gagal: Buku tidak tersedia];
+
+    %% Styling untuk visual
+    style A fill:#4A90E2,stroke:#333,stroke-width:2px,color:#fff
+    style B fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#2ECC71,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#E74C3C,stroke:#333,stroke-width:2px,color:#fff
+    style H fill:#E74C3C,stroke:#333,stroke-width:2px,color:#fff
+```
+
+
 ### Application Flow Diagram
 ```mermaid
 graph TD
@@ -111,28 +136,4 @@ graph TD
     style BukuDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
     style CategoryDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
     style PeminjamanDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
-```
-
-### Alur Peminjaman Buku
-
-```mermaid
-graph TD
-    %% Teks node yang lebih sederhana untuk menghindari kesalahan
-    A[User Request: Pinjam Buku] --> B{Cari User & Buku};
-    B -- "Ditemukan" --> C{Cek Ketersediaan & Stok};
-    B -- "Tidak Ditemukan" --> G[Gagal: User/Buku tidak ditemukan];
-    C -- "Ya" --> D[Kurangi Stok Buku];
-    D --> E[Buat Record Peminjaman];
-    E --> F[Sukses: Buku berhasil dipinjam];
-    C -- "Tidak" --> H[Gagal: Buku tidak tersedia];
-
-    %% Styling untuk visual
-    style A fill:#4A90E2,stroke:#333,stroke-width:2px,color:#fff
-    style B fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
-    style C fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
-    style D fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
-    style E fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
-    style F fill:#2ECC71,stroke:#333,stroke-width:2px,color:#fff
-    style G fill:#E74C3C,stroke:#333,stroke-width:2px,color:#fff
-    style H fill:#E74C3C,stroke:#333,stroke-width:2px,color:#fff
 ```
