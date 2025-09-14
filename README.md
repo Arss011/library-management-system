@@ -8,7 +8,7 @@ Project: **Library Management System**
 Tech Stack: **Java Spring Boot**
 
 ## API Documentation Swagger
-Dokumentasi API lengkap tersedia melalui Swagger UI. 
+Dokumentasi API Swagger UI. 
 [http://localhost:8080/swagger-ui/index.html#/](http://localhost:8080/swagger-ui/index.html#/)
 
 ## Flowchart
