@@ -12,7 +12,8 @@ public class BukuResponse {
     private String penulis;
     private String isbn;
     private Year tahunTerbit;
-    private String genre;
+    private CategoryResponse Category;
     private Boolean isTersedia;
+    private Integer stock;
 
 }

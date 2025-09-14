@@ -24,12 +24,14 @@ spring:
       max-request-size: 10MB
 
 app:
-  upload-directory: ecommerce-uploads
-  folder-temp: ./ecommerce-temp/
+  upload-directory: library_management_system
+  folder-temp: ./library_management_system-temp/
+  jwtSecret: "S3CR3TK3YAPPK3Y1234"
 
 logging:
   level:
-    com.sinaukoding.ecommerce: TRACE
+    com.sinaukoding.library_management_system: TRACE
+    org.springframework.security: DEBUG
 
 springdoc:
   api-docs:

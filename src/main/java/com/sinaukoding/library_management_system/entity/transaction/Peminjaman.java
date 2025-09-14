@@ -2,7 +2,7 @@ package com.sinaukoding.library_management_system.entity.transaction;
 
 import com.sinaukoding.library_management_system.entity.BaseEntity;
 import com.sinaukoding.library_management_system.entity.master.Buku;
-import com.sinaukoding.library_management_system.entity.master.User;
+import com.sinaukoding.library_management_system.entity.managementuser.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

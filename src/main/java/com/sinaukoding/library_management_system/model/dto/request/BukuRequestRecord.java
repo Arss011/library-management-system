@@ -1,5 +1,6 @@
 package com.sinaukoding.library_management_system.model.dto.request;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,6 +23,10 @@ public record BukuRequestRecord(
         @NotNull(message = "Tahun terbit tidak boleh kosong")
         Year tahunTerbit,
 
-        @NotBlank(message = "Genre tidak boleh kosong")
-        String genre
+        @NotNull(message = "Stock tidak boleh kosong")
+        @Min(value = 0, message = "Stock tidak boleh negatif")
+        Integer stock,
+
+        @NotBlank(message = "Category ID tidak boleh kosong")
+        String categoryId
 ) {}

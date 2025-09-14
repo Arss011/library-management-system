@@ -27,19 +27,19 @@ import java.time.LocalDateTime;
 public class BaseEntity {
 
     @CreatedDate
-    @Column(columnDefinition = "timestamp with time zone", nullable = false, updatable = false)
+    @Column(columnDefinition = "timestamp with time zone", updatable = false)
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @Column(columnDefinition = "timestamp with time zone", nullable = false)
+    @Column(columnDefinition = "timestamp with time zone")
     private LocalDateTime modifiedDate;
 
     @CreatedBy
-    @Column(name = "created_by", nullable = false, updatable = false)
+    @Column(name = "created_by", updatable = false)
     private String createdBy;
 
     @LastModifiedBy
-    @Column(name = "update_by", nullable = false)
+    @Column(name = "update_by")
     private String updateBy;
 
 }

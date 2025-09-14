@@ -2,6 +2,8 @@ package com.sinaukoding.library_management_system.controller.master;
 
 import com.sinaukoding.library_management_system.entity.master.Buku;
 import com.sinaukoding.library_management_system.model.dto.request.BukuRequestRecord;
+import com.sinaukoding.library_management_system.model.dto.request.StockRequestRecord;
+import com.sinaukoding.library_management_system.model.dto.response.BukuResponse;
 import com.sinaukoding.library_management_system.service.BukuService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -22,13 +24,13 @@ public class BukuController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Buku>> getAllBuku() {
-        List<Buku> listBuku = bukuService.findAll();
+    public ResponseEntity<List<BukuResponse>> getAllBuku() {
+        List<BukuResponse> listBuku = bukuService.findAll();
         return ResponseEntity.ok(listBuku);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Buku> getBukuById(@PathVariable String id) {
+    public ResponseEntity<BukuResponse> getBukuById(@PathVariable String id) {
         return bukuService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -36,15 +38,15 @@ public class BukuController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Buku> createBuku(@Valid @RequestBody BukuRequestRecord request) {
-        Buku savedBuku = bukuService.save(request);
+    public ResponseEntity<BukuResponse> createBuku(@Valid @RequestBody BukuRequestRecord request) {
+        BukuResponse savedBuku = bukuService.save(request);
         return new ResponseEntity<>(savedBuku, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Buku> updateBuku(@PathVariable String id, @Valid @RequestBody BukuRequestRecord request) {
-        Buku updatedBuku = bukuService.update(id, request);
+    public ResponseEntity<BukuResponse> updateBuku(@PathVariable String id, @Valid @RequestBody BukuRequestRecord request) {
+        BukuResponse updatedBuku = bukuService.update(id, request);
         return ResponseEntity.ok(updatedBuku);
     }
 
@@ -53,5 +55,19 @@ public class BukuController {
     public ResponseEntity<Void> deleteBuku(@PathVariable String id) {
         bukuService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/reduce-stock")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<BukuResponse> reduceStock(@PathVariable String id, @Valid @RequestBody StockRequestRecord request) {
+        BukuResponse updatedBuku = bukuService.reduceStock(id, request.quantity());
+        return ResponseEntity.ok(updatedBuku);
+    }
+
+    @PostMapping("/{id}/increase-stock")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<BukuResponse> increaseStock(@PathVariable String id, @Valid @RequestBody StockRequestRecord request) {
+        BukuResponse updatedBuku = bukuService.increaseStock(id, request.quantity());
+        return ResponseEntity.ok(updatedBuku);
     }
 }
