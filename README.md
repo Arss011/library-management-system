@@ -50,7 +50,7 @@ graph TD
             API[API Gateway]
         end
 
-        subgraph "Service Mikro (Microservices)"
+        subgraph "Service"
             subgraph "Service Autentikasi"
                 AuthController["/api/auth"]
                 AuthService[AuthService]
