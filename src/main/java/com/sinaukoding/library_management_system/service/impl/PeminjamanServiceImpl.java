@@ -33,7 +33,6 @@ public class PeminjamanServiceImpl implements PeminjamanService {
     private final ValidatorService validatorService;
     private final BukuService bukuService;
 
-    // Mapper methods
     private PeminjamanResponse mapToPeminjamanResponse(Peminjaman peminjaman) {
         return PeminjamanResponse.builder()
                 .id(peminjaman.getId())

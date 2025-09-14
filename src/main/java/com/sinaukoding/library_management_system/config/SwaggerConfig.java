@@ -13,8 +13,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Muhammad Fariz",
-                        email = "muhamad.fariz@yopmail.com"
+                        name = "Dicky Aris Munandar",
+                        email = "munandardicky0@gmail.com"
                 ),
                 description = "Swagger documentation for Library Management System",
                 title = "Swagger Library Management System",
