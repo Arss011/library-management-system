@@ -50,26 +50,26 @@ graph TD
             API[API Gateway]
         end
 
-        subgraph "Layanan Mikro (Microservices)"
-            subgraph "Layanan Autentikasi"
+        subgraph "Service Mikro (Microservices)"
+            subgraph "Service Autentikasi"
                 AuthController["/api/auth"]
                 AuthService[AuthService]
-                UserDB[User Database]
+                UserDB[User Table]
             end
 
-            subgraph "Layanan Buku & Kategori"
+            subgraph "Service Buku & Kategori"
                 BukuController["/api/buku"]
                 CategoryController["/api/category"]
                 BukuService[BukuService]
                 CategoryService[CategoryService]
-                BukuDB[Buku Database]
-                CategoryDB[Category Database]
+                BukuDB[Buku Table]
+                CategoryDB[Category Table]
             end
 
-            subgraph "Layanan Peminjaman"
+            subgraph "Service Peminjaman"
                 PeminjamanController["/api/peminjaman"]
                 PeminjamanService[PeminjamanService]
-                PeminjamanDB[Peminjaman Database]
+                PeminjamanDB[Peminjaman Table]
             end
         end
     end
