@@ -2,6 +2,8 @@ package com.sinaukoding.library_management_system.controller;
 
 import com.sinaukoding.library_management_system.entity.transaction.Peminjaman;
 import com.sinaukoding.library_management_system.model.dto.request.PeminjamanRequestRecord;
+import com.sinaukoding.library_management_system.model.dto.response.BaseResponse;
+import com.sinaukoding.library_management_system.model.dto.response.PeminjamanResponse;
 import com.sinaukoding.library_management_system.security.UserLoggedInConfig;
 import com.sinaukoding.library_management_system.service.PeminjamanService;
 import jakarta.validation.Valid;
@@ -23,63 +25,63 @@ public class PeminjamanController {
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<Peminjaman>> getAllPeminjaman() {
-        List<Peminjaman> listPeminjaman = peminjamanService.findAll();
-        return ResponseEntity.ok(listPeminjaman);
+    public ResponseEntity<BaseResponse<List<PeminjamanResponse>>> getAllPeminjaman() {
+        List<PeminjamanResponse> listPeminjaman = peminjamanService.findAll();
+        return ResponseEntity.ok(BaseResponse.ok("Data peminjaman berhasil diambil", listPeminjaman));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Peminjaman> getPeminjamanById(@PathVariable String id) {
+    public ResponseEntity<BaseResponse<PeminjamanResponse>> getPeminjamanById(@PathVariable String id) {
         return peminjamanService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .map(peminjaman -> ResponseEntity.ok(BaseResponse.ok("Data peminjaman berhasil diambil", peminjaman)))
+                .orElse(ResponseEntity.ok(BaseResponse.badRequest("Data peminjaman tidak ditemukan")));
     }
 
     @GetMapping("/user")
-    public ResponseEntity<List<Peminjaman>> getPeminjamanByUser(@AuthenticationPrincipal UserLoggedInConfig userLoggedInConfig) {
+    public ResponseEntity<BaseResponse<List<PeminjamanResponse>>> getPeminjamanByUser(@AuthenticationPrincipal UserLoggedInConfig userLoggedInConfig) {
         String userId = userLoggedInConfig.getUser().getId();
-        List<Peminjaman> listPeminjaman = peminjamanService.findByUserId(userId);
-        return ResponseEntity.ok(listPeminjaman);
+        List<PeminjamanResponse> listPeminjaman = peminjamanService.findByUserId(userId);
+        return ResponseEntity.ok(BaseResponse.ok("Data peminjaman user berhasil diambil", listPeminjaman));
     }
 
     @GetMapping("/buku/{bukuId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<Peminjaman>> getPeminjamanByBuku(@PathVariable String bukuId) {
-        List<Peminjaman> listPeminjaman = peminjamanService.findByBukuId(bukuId);
-        return ResponseEntity.ok(listPeminjaman);
+    public ResponseEntity<BaseResponse<List<PeminjamanResponse>>> getPeminjamanByBuku(@PathVariable String bukuId) {
+        List<PeminjamanResponse> listPeminjaman = peminjamanService.findByBukuId(bukuId);
+        return ResponseEntity.ok(BaseResponse.ok("Data peminjaman buku berhasil diambil", listPeminjaman));
     }
 
     @PostMapping("/pinjam")
-    public ResponseEntity<Peminjaman> pinjamBuku(
+    public ResponseEntity<BaseResponse<PeminjamanResponse>> pinjamBuku(
             @AuthenticationPrincipal UserLoggedInConfig userLoggedInConfig,
             @Valid @RequestBody PeminjamanRequestRecord request) {
         String userId = userLoggedInConfig.getUser().getId();
-        Peminjaman peminjaman = peminjamanService.pinjamBuku(userId, request);
-        return new ResponseEntity<>(peminjaman, HttpStatus.CREATED);
+        PeminjamanResponse peminjaman = peminjamanService.pinjamBuku(userId, request);
+        return new ResponseEntity<>(BaseResponse.ok("Buku berhasil dipinjam", peminjaman), HttpStatus.CREATED);
     }
 
     @PostMapping("/{id}/kembalikan")
-    public ResponseEntity<Peminjaman> kembalikanBuku(
+    public ResponseEntity<BaseResponse<PeminjamanResponse>> kembalikanBuku(
             @PathVariable String id,
             @AuthenticationPrincipal UserLoggedInConfig userLoggedInConfig) {
         String userId = userLoggedInConfig.getUser().getId();
-        Peminjaman peminjaman = peminjamanService.kembalikanBuku(id, userId);
-        return ResponseEntity.ok(peminjaman);
+        PeminjamanResponse peminjaman = peminjamanService.kembalikanBuku(id, userId);
+        return ResponseEntity.ok(BaseResponse.ok("Buku berhasil dikembalikan", peminjaman));
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Peminjaman> updatePeminjaman(
+    public ResponseEntity<BaseResponse<PeminjamanResponse>> updatePeminjaman(
             @PathVariable String id,
             @Valid @RequestBody PeminjamanRequestRecord request) {
-        Peminjaman updatedPeminjaman = peminjamanService.update(id, request);
-        return ResponseEntity.ok(updatedPeminjaman);
+        PeminjamanResponse updatedPeminjaman = peminjamanService.update(id, request);
+        return ResponseEntity.ok(BaseResponse.ok("Data peminjaman berhasil diupdate", updatedPeminjaman));
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> deletePeminjaman(@PathVariable String id) {
+    public ResponseEntity<BaseResponse<Void>> deletePeminjaman(@PathVariable String id) {
         peminjamanService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(BaseResponse.ok("Data peminjaman berhasil dihapus", null));
     }
 }
