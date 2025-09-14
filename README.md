@@ -97,18 +97,18 @@ graph TD
     PeminjamanService -- "Mengakses" --> UserDB
 
     %% Styling untuk visual yang lebih jelas
-    style C fill:#FFFFE0,stroke:#333,stroke-width:2px
-    style API fill:#B0E0E6,stroke:#333,stroke-width:2px
-    style AuthController fill:#E6E6FA,stroke:#333,stroke-width:2px
-    style BukuController fill:#E6E6FA,stroke:#333,stroke-width:2px
-    style CategoryController fill:#E6E6FA,stroke:#333,stroke-width:2px
-    style PeminjamanController fill:#E6E6FA,stroke:#333,stroke-width:2px
-    style AuthService fill:#F0FFF0,stroke:#333,stroke-width:2px
-    style BukuService fill:#F0FFF0,stroke:#333,stroke-width:2px
-    style CategoryService fill:#F0FFF0,stroke:#333,stroke-width:2px
-    style PeminjamanService fill:#F0FFF0,stroke:#333,stroke-width:2px
-    style UserDB fill:#FFF0F5,stroke:#333,stroke-width:2px
-    style BukuDB fill:#FFF0F5,stroke:#333,stroke-width:2px
-    style CategoryDB fill:#FFF0F5,stroke:#333,stroke-width:2px
-    style PeminjamanDB fill:#FFF0F5,stroke:#333,stroke-width:2px
+    style C fill:#4A90E2,stroke:#333,stroke-width:2px,color:#fff
+    style API fill:#00A1D3,stroke:#333,stroke-width:2px,color:#fff
+    style AuthController fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style BukuController fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style CategoryController fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style PeminjamanController fill:#F5A623,stroke:#333,stroke-width:2px,color:#000
+    style AuthService fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style BukuService fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style CategoryService fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style PeminjamanService fill:#7ED321,stroke:#333,stroke-width:2px,color:#000
+    style UserDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
+    style BukuDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
+    style CategoryDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
+    style PeminjamanDB fill:#BD10E0,stroke:#333,stroke-width:2px,color:#fff
 ```
